@@ -1,6 +1,6 @@
 {
   "name": "requirejs-tpl",
-  "description": "A RequireJS plugin for requiring simple templates.",
+  "description": "A RequireJS plugin for requiring Knockout.js templates.",
   "keywords": [
     "template",
     "requirejs"
