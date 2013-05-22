@@ -1,0 +1,12 @@
+{
+  "name": "requirejs-tpl",
+  "description": "A RequireJS plugin for requiring simple templates.",
+  "keywords": [
+    "template",
+    "requirejs"
+  ],
+  "version": "0.1.0",
+   "publishConfig": {
+        "registry": "http://npm.one.com/"
+    }
+}
