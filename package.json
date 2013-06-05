@@ -6,11 +6,7 @@
     "requirejs"
   ],
   "version": "0.1.0",
-  "publishConfig": {
-    "registry": "http://npm.one.com/"
-  },
   "repository": {
-    "type": "git",
-    "url": "git.one.com:/git/requirejs.tpl.git"
+    "url": "git://github.com/One-com/requirejs-tpl.git"
   }
 }
