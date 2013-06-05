@@ -1,7 +1,7 @@
 Template plugin for RequireJs
 ------
 
-This plugin will allow you to require templates, as employed in KnockoutJS, via the ordinary dependency syntax. It expects the templates to have the `.ko` extension.
+This plugin will allow you to require templates, as employed in KnockoutJS, via the ordinary dependency syntax.
 
 Example:
 
