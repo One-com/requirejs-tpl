@@ -1,6 +1,8 @@
 Template plugin for RequireJs
 ------
 
+Notice! this plugin requires the standard [text plugin](https://github.com/requirejs/text).
+
 This plugin will allow you to require templates, as employed in KnockoutJS, via the ordinary dependency syntax.
 
 Example:
