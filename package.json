@@ -8,5 +8,14 @@
   "version": "0.2.0",
   "repository": {
     "url": "git://github.com/One-com/requirejs-tpl.git"
+  },
+  "devDependencies": {
+    "jsdom": "=0.10.5",
+    "mocha": "=1.19.0",
+    "sinon": "=1.10.0",
+    "underscore": "=1.6.0",
+    "unexpected": "=3.2.0",
+    "unexpected-jsdom": "=0.1.0",
+    "unexpected-sinon": "=3.0.2"
   }
 }
