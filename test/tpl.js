@@ -42,7 +42,9 @@ describe('tpl', function () {
             });
             new vm.Script(tplText, tplPath).runInContext(context);
             expect(context.define, 'was called once');
-            expect(document, 'to equal', typeof value === 'string' ? jsdom.jsdom(value) : value);
+            if (typeof value !== 'undefined') {
+                expect(document, 'to equal', typeof value === 'string' ? jsdom.jsdom(value) : value);
+            }
         });
 
     it('should load a template', function () {
@@ -117,5 +119,34 @@ describe('tpl', function () {
         }, 'to be loaded as a template', '<html><head></head><body><script type="text/html" id="pureText">Pure text</script></body></html>');
 
         expect(context.TRHTML, 'was not called');
+    });
+
+    it('should hoist nested templates', function () {
+        expect(
+            'nestedTemplates.html',
+            'to be loaded as a template',
+            '<html>' +
+                '<head></head>' +
+                '<body>' +
+                    '<script type="text/html" id="subtemplate" foo="bar">Contents of subtemplate</script>' +
+                    '<script type="text/html" id="nestedTemplates">Foo bar</script>' +
+                '</body>' +
+            '</html>'
+        );
+    });
+
+    it('should hoist nested templates', function () {
+        expect(
+            'twoLevelsOfNestedTemplates.html',
+            'to be loaded as a template',
+            '<html>' +
+                '<head></head>' +
+                '<body>' +
+                    '<script type="text/html" id="subsubtemplate" baz="quux">Contents of subsubtemplate</script>' +
+                    '<script type="text/html" id="subtemplate" foo="bar">Contents of subtemplate</script>' +
+                    '<script type="text/html" id="nestedTemplates">Foo bar</script>' +
+                '</body>' +
+            '</html>'
+        );
     });
 });
