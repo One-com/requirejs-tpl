@@ -118,4 +118,22 @@ describe('tpl', function () {
 
         expect(context.TRHTML, 'was not called');
     });
+
+    it('should hoist nested <script type=text/html> to the top level while preserving the attributes', function () {
+        expect(
+            'issue1.html',
+            'to be loaded as a template',
+            '<html>' +
+            '<head>' +
+            '</head>' +
+            '<body>' +
+            '<script type="text/html" data-outer="id">\n' +
+            '    <div data-bind="class: cls"></div>\n' +
+            '</script>' +
+            '<script type="text/html" data-inner="id">\n' +
+            '    <span>Text</span>\n' +
+            '</script>' +
+            '</body>' +
+            '</html>');
+    });
 });
