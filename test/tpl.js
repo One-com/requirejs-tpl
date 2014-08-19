@@ -52,6 +52,11 @@ describe('tpl', function () {
         expect('Pure text', 'to be loaded as a template', '<html><head></head><body><script type="text/html" id="theTemplateName">Pure text</script></body></html>');
     });
 
+    it('should use the file name without any extension', function () {
+        templateName = 'theTemplateName.touch.html';
+        expect('Pure text', 'to be loaded as a template', '<html><head></head><body><script type="text/html" id="theTemplateName">Pure text</script></body></html>');
+    });
+
     it('should not overwrite an existing template of with the same id', function () {
         expect(function () {
             document.body.innerHTML = '<script type="text/html" id="theTemplateName">Existing pure text</script>';
