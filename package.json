@@ -17,5 +17,8 @@
     "unexpected": "=3.2.0",
     "unexpected-jsdom": "=0.1.0",
     "unexpected-sinon": "=3.0.2"
+  },
+  "peerDependencies": {
+    "requirejs-tpl": "2.0.x"
   }
 }
