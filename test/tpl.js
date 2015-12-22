@@ -1,4 +1,4 @@
-/*global __dirname, describe, beforeEach, console, it*/
+/*global __dirname, describe, beforeEach, console, it, global*/
 var unexpected = require('unexpected'),
     _ = require('underscore'),
     jsdom = require('jsdom'),
@@ -22,7 +22,7 @@ describe('tpl', function () {
         .use(require('unexpected-sinon'))
         .use(require('unexpected-dom'))
         .addAssertion('<string> to be loaded as a template <any?>', function (expect, subject, value) {
-            var context = vm.createContext();
+            var context = {};
             context.window = context;
             context.console = console; // For debugging
             _.extend(context, window);
@@ -34,13 +34,16 @@ describe('tpl', function () {
                     var htmlString = subject;
                     cb(htmlString);
                 }).named('req');
-
                 var load = sinon.spy().named('load');
                 obj.load(templateName, req, load);
                 expect(req, 'was called once');
                 expect(load, 'was called once');
             });
-            new vm.Script(tplText, tplPath).runInContext(context);
+
+            var originalGlobals = _.pick(global, Object.keys(context));
+            _.extend(global, context);
+            vm.runInThisContext(tplText, tplPath);
+            _.extend(global, originalGlobals);
             expect(context.define, 'was called once');
             if (typeof value !== 'undefined') {
                 expect(document.documentElement, 'to exhaustively satisfy', typeof value === 'string' ? jsdom.jsdom(value).documentElement : value);
