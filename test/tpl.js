@@ -18,10 +18,9 @@ describe('tpl', function () {
     });
 
     var expect = unexpected.clone()
-        .installPlugin(require('unexpected-sinon'))
-        .installPlugin(require('unexpected-jsdom'))
-        .addAssertion('to be loaded as a template', function (expect, subject, value) {
-            expect(subject, 'to be a string');
+        .use(require('unexpected-sinon'))
+        .use(require('unexpected-dom'))
+        .addAssertion('<string> to be loaded as a template <any?>', function (expect, subject, value) {
             var context = vm.createContext();
             context.window = context;
             context.console = console; // For debugging
@@ -29,14 +28,13 @@ describe('tpl', function () {
             context.define = sinon.spy(function (obj) {
                 expect(obj.load, 'to be a function');
                 var req = sinon.spy(function (deps, cb) {
-                    expect(deps, 'to equal', ['text!' + templateName]);
+                    expect(deps, 'to satisfy', ['text!' + templateName]);
                     expect(cb, 'to be a function');
                     var htmlString = subject;
                     cb(htmlString);
-                });
+                }).named('req');
 
-                var req,
-                    load = sinon.spy();
+                var load = sinon.spy().named('load');
                 obj.load(templateName, req, load);
                 expect(req, 'was called once');
                 expect(load, 'was called once');
@@ -44,7 +42,7 @@ describe('tpl', function () {
             new vm.Script(tplText, tplPath).runInContext(context);
             expect(context.define, 'was called once');
             if (typeof value !== 'undefined') {
-                expect(document, 'to equal', typeof value === 'string' ? jsdom.jsdom(value) : value);
+                expect(document.documentElement, 'to exhaustively satisfy', typeof value === 'string' ? jsdom.jsdom(value).documentElement : value);
             }
         });
 
