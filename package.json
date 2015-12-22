@@ -15,6 +15,7 @@
     "travis": "npm test && npm run coverage && (<coverage/lcov.info coveralls || true)",
     "coverage": "NODE_ENV=development istanbul cover _mocha -- --reporter dot && echo google-chrome coverage/lcov-report/index.html"
   },
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "coveralls": "2.11.6",
     "istanbul": "0.4.1",
