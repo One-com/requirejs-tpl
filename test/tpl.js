@@ -60,7 +60,7 @@ describe('tpl', function () {
         expect(function () {
             document.body.innerHTML = '<script type="text/html" id="theTemplateName">Existing pure text</script>';
             expect('Pure text', 'to be loaded as a template');
-        }, 'to throw exception', 'tpl plugin for require.js: More than one of the loaded templates have the file name theTemplateName.html, skipped theTemplateName.html. Please disambiguate by changing at least one of the file names.');
+        }, 'to throw exception', /tpl plugin for require\.js: More than one of the loaded templates have the file name theTemplateName\.html, skipped theTemplateName\.html\. Please disambiguate by changing at least one of the file names\./);
     });
 
     it('should invoke TRHTML on the template if available', function () {
