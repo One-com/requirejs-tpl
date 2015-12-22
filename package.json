@@ -9,8 +9,17 @@
   "repository": {
     "url": "git://github.com/One-com/requirejs-tpl.git"
   },
+  "scripts": {
+    "lint": "jshint .",
+    "test": "mocha && npm run lint",
+    "travis": "npm test && npm run coverage && (<coverage/lcov.info coveralls || true)",
+    "coverage": "NODE_ENV=development istanbul cover _mocha -- --reporter dot && echo google-chrome coverage/lcov-report/index.html"
+  },
   "devDependencies": {
+    "coveralls": "2.11.6",
+    "istanbul": "0.4.1",
     "jsdom": "0.10.5",
+    "jshint": "2.8.0",
     "mocha": "2.3.4",
     "sinon": "1.17.2",
     "underscore": "1.8.3",

@@ -1,3 +1,4 @@
+/*global __dirname, describe, beforeEach, console, it*/
 var unexpected = require('unexpected'),
     _ = require('underscore'),
     jsdom = require('jsdom'),

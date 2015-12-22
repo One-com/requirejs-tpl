@@ -1,5 +1,10 @@
 Template plugin for RequireJs
-------
+-----------------------------
+
+[![NPM version](https://badge.fury.io/js/requirejs-tpl.svg)](http://badge.fury.io/js/requirejs-tpl)
+[![Build Status](https://travis-ci.org/One-com/requirejs-tpl.svg?branch=master)](https://travis-ci.org/One-com/requirejs-tpl)
+[![Coverage Status](https://img.shields.io/coveralls/One-com/requirejs-tpl.svg)](https://coveralls.io/r/One-com/requirejs-tpl?branch=master)
+[![Dependency Status](https://david-dm.org/One-com/requirejs-tpl.svg)](https://david-dm.org/One-com/requirejs-tpl)
 
 Notice! this plugin requires the standard [text plugin](https://github.com/requirejs/text).
 
