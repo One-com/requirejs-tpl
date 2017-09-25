@@ -35,7 +35,7 @@ describe('tpl', function () {
                     cb(htmlString);
                 }).named('req');
                 var load = sinon.spy().named('load');
-                obj.load(templateName, req, load);
+                obj.load(templateName, req, load, {});
                 expect(req, 'was called once');
                 expect(load, 'was called once');
             });
